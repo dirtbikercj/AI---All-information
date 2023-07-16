@@ -1,0 +1,15 @@
+{
+    "EnableMod": true,
+    "SimpleLevelingRate": 1,
+    "EnableSkillFatique": true,
+    "EnableSkillAtrophy": true,
+    
+    "EnableAdvancedAdjustments": false, 
+    "SkillMinEffectiveness": 0.0001,
+    "SkillFatiguePerPoint": 0.6,
+    "SkillFreshEffectiveness": 1.3,
+    "SkillFreshPoints": 1,
+    "SkillPointsBeforeFatigue": 1,
+    "SkillFatigueReset": 200,
+    "SkillExpPerLevel": 100
+}
