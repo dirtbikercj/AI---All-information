@@ -1,15 +1,16 @@
-All info(AI) by dirtbikercj
+Easy Skill Options by dirtbikercj
 
 Simple mod to either simply increase your leveling rate, or adjust them to your specific liking.
 
 bool = true/false
 number = 1, 1.2, 0.00010
+integer = 1, 2, 3...
 
 Config:
 
 EnabledMod - Enables or disables mod. (Type: bool)
 
-SimpleLevelingRate - Simple leveling multplier. (2 would be 2x normal rate)                     (Type: number)
+SimpleLevelingRate - Simple leveling multplier. (2 would be 2x normal rate)                     (Type: Integer)
 
 EnableSkillFatique - Enables or disables skill fatique.                                         (Type: bool)
 

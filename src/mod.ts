@@ -36,6 +36,8 @@ class DEasyLevelingOptions implements IPreAkiLoadMod, IPostDBLoadMod
         const skillMinEffectiveness = database.globals.config.SkillMinEffectiveness;
         const skillPointsBeforeFatique = database.globals.config.SkillPointsBeforeFatigue;
 
+        const simpleLevelingRate = Math.ceil(this.modConfig.SimpleLevelingRate);
+
         if (this.modConfig.EnableMod && !this.modConfig.EnableAdvancedAdjustments)
         {
             database.globals.config.SkillAtrophy = this.modConfig.EnableSkillAtrophy;
@@ -49,11 +51,11 @@ class DEasyLevelingOptions implements IPreAkiLoadMod, IPostDBLoadMod
                 this.logger.logWithColor("EasyLevelingOptions: Skill Fatique disabled", LogTextColor.GREEN)
             }
             
-            database.globals.config.SkillFreshEffectiveness = skillFreshEffectiveness * this.modConfig.SimpleLevelingRate;      // Progression while fresh multiplier
-            database.globals.config.SkillFreshPoints = skillFreshPoints * this.modConfig.SimpleLevelingRate;                    // Amount of fresh skill points
-            database.globals.config.SkillMinEffectiveness = skillMinEffectiveness * this.modConfig.SimpleLevelingRate;          // Minimum skill point multiplier
+            database.globals.config.SkillFreshEffectiveness = skillFreshEffectiveness * simpleLevelingRate;      // Progression while fresh multiplier
+            database.globals.config.SkillFreshPoints = skillFreshPoints * simpleLevelingRate;                    // Amount of fresh skill points
+            database.globals.config.SkillMinEffectiveness = skillMinEffectiveness * simpleLevelingRate;          // Minimum skill point multiplier
            
-            this.logger.logWithColor(`EasyLevelingOptions: Simple rate Enabled. Multiplier = ${this.modConfig.SimpleLevelingRate}`, LogTextColor.GREEN)
+            this.logger.logWithColor(`EasyLevelingOptions: Simple rate Enabled. Multiplier = ${simpleLevelingRate}`, LogTextColor.GREEN)
         }
         else if (this.modConfig.EnableMod && this.modConfig.EnableAdvancedAdjustments)
         {
