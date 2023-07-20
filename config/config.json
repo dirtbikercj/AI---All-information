@@ -3,7 +3,7 @@
     "SimpleLevelingRate": 1,
     "EnableSkillFatique": true,
     "EnableSkillAtrophy": true,
-    
+
     "EnableAdvancedAdjustments": false, 
     "SkillMinEffectiveness": 0.0001,
     "SkillFatiguePerPoint": 0.6,
@@ -11,5 +11,63 @@
     "SkillFreshPoints": 1,
     "SkillPointsBeforeFatigue": 1,
     "SkillFatigueReset": 200,
-    "SkillExpPerLevel": 100
+    "SkillExpPerLevel": 100,
+
+    "EnableExhaustionChanges": false,
+    "Exhaustion": {
+        "DefaultDelay": 30,
+        "DefaultResidueTime": 5,
+        "Damage": 1,
+        "DamageLoopTime": 5
+      },
+
+    "EnableEliteSkillChanges": false,
+    "HeavyBleeding":
+    {
+        "EliteVitalityDuration": 33
+    },  
+    "LightBleeding":
+    {
+        "EliteVitalityDuration": 22
+    },
+    "EliteSlots":
+    {
+        "Generator":
+        {
+            "Slots": 2
+        }
+    },
+    "Crafting":
+    {
+        "EliteExtraProduction": 1
+    },
+    "LightVests":
+    {
+        "WearChanceRepairLVestsReduceEliteLevel": 0.5
+    },
+    "HeavyVests":
+    {
+        "WearChanceRepairHVestsReduceEliteLevel": 0.5,
+        "RicochetChanceHVestsEliteLevel": 0.05
+    },
+    "WeaponTreatment":
+    {
+        "WearChanceRepairGunsReduceEliteLevel": 0.5
+    },
+    "Intellect":
+    {
+        "WearChanceReduceEliteLevel": 0.5
+    },
+    "Charisma":
+    {
+        "ScavCaseDiscount": 0.1,
+        "FenceStandingLossDiscount": 0.5,
+        "RepeatableQuestExtraCount": 1
+    },
+    "TroubleShooting": 
+    {
+        "EliteDurabilityChanceReduceMult": 0.3,
+        "EliteAmmoChanceReduceMult": 0.3,
+        "EliteMagChanceReduceMult": 0.3
+    }
 }

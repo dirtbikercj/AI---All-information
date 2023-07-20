@@ -73,6 +73,37 @@ class DEasyLevelingOptions implements IPreAkiLoadMod, IPostDBLoadMod
         {
             this.logger.info("EasyLevelingOptions: Status-Disabled");
         }
+
+        if (this.modConfig.EnableEliteSkillChanges)
+        {
+            //Elite Skills
+            database.globals.config.Health.Effects.HeavyBleeding.EliteVitalityDuration = this.modConfig.HeavyBleeding.EliteVitalityDuration;
+            database.globals.config.Health.Effects.LightBleeding.EliteVitalityDuration = this.modConfig.LightBleeding.EliteVitalityDuration;
+            database.globals.config.SkillsSettings.HideoutManagement.EliteSlots.Generator.Slots = this.modConfig.EliteSlots.Generator.Slots;
+            database.globals.config.SkillsSettings.Crafting.EliteExtraProductions = this.modConfig.Crafting.EliteSlots;
+            database.globals.config.SkillsSettings.LightVests.WearChanceRepairLVestsReduceEliteLevel = this.modConfig.LightVests.WearChanceRepairLVestsReduceEliteLevel;
+            database.globals.config.SkillsSettings.HeavyVests.WearChanceRepairLVestsReduceEliteLevel = this.modConfig.HeavyVests.WearChanceRepairLVestsReduceEliteLevel;
+            database.globals.config.SkillsSettings.WeaponTreatment.WearChanceRepairGunsReduceEliteLevel = this.modConfig.WeaponTreatment.WearChanceRepairGunsReduceEliteLevel;
+            database.globals.config.SkillsSettings.Intellect.WearChanceReduceEliteLevel = this.modConfig.Intellect.WearChanceReduceEliteLevel;
+            database.globals.config.SkillsSettings.Charisma.BonusSettings.EliteBonusSettings.ScavCaseDiscount = this.modConfig.Charisma.ScavCaseDiscount;
+            database.globals.config.SkillsSettings.Charisma.BonusSettings.EliteBonusSettings.FenceStandingLossDiscount = this.modConfig.Charisma.FenceStandingLossDiscount;
+            database.globals.config.SkillsSettings.Charisma.BonusSettings.EliteBonusSettings.RepeatableQuestExtraCount = this.modConfig.Charisma.RepeatableQuestExtraCount;
+            database.globals.config.SkillsSettings.TroubleShooting.EliteDurabilityChanceReduceMult = this.modConfig.TroubleShooting.EliteDurabilityChanceReduceMult;
+            database.globals.config.SkillsSettings.TroubleShooting.EliteAmmoChanceReduceMult = this.modConfig.TroubleShooting.EliteAmmoChanceReduceMult;
+            database.globals.config.SkillsSettings.TroubleShooting.EliteMagChanceReduceMult = this.modConfig.TroubleShooting.EliteMagChanceReduceMult;
+
+            this.logger.logWithColor("EasyLevelingOptions: Elite Skill adjustments Enabled", LogTextColor.GREEN)
+        }
+
+        if (this.modConfig.EnableExhaustionChanges)
+        {
+            database.globals.config.Health.Effects.Exhaustion.DefaultDelay = this.modConfig.Exhaustion.DefaultDelay;
+            database.globals.config.Health.Effects.Exhaustion.DefaultResidueTime = this.modConfig.Exhaustion.DefaultResidueTime;
+            database.globals.config.Health.Effects.Exhaustion.Damage = this.modConfig.Exhaustion.Damage;
+            database.globals.config.Health.Effects.Exhaustion.DamageLoopTime = this.modConfig.Exhaustion.DamageLoopTime;
+            
+            this.logger.logWithColor("EasyLevelingOptions: Exhaustion adjustments Enabled", LogTextColor.GREEN)
+        }
     }
 }
 
