@@ -31,3 +31,19 @@ SkillPointsBeforeFatique - Ammount of skill points gained before skill fatique k
 SkillFatiqueReset - Time before skill fatique resets.                                           (type: number)
 
 SkillExpPerLevel - Ammount of base points needed to gain a level.                               (Type: number)
+
+
+# EXHAUSTION #
+
+EnableExhaustionChanges - Enables/Disables Exhaustion changes                                   (type: bool)
+DefaultDelay - Delay before exhaustion kicks in                                                 (type: integer)                                      
+DefaultResidueTime - No fucking idea what this is tbh                                           (Type: integer)
+Damage - Damage per tick                                                                        (type: integer)
+DamageLoopTime - Time between damage ticks                                                      (type: integer)
+
+# Elite Skills #
+
+EnableEliteSkillChanges - Enables/disables Elite skill changes                                  (type: bool)
+
+If you know the game you know what this shit does, not wasting my time writing what they do. Use google and the wiki.
+Some elite skills are handled client side. Ill looking into changing them at a later date, hence why some things might be missing at time of writing.
