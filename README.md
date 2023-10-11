@@ -2,48 +2,49 @@ Easy Skill Options by dirtbikercj
 
 Simple mod to either simply increase your leveling rate, or adjust them to your specific liking.
 
-bool = true/false
-number = 1, 1.2, 0.00010
-integer = 1, 2, 3...
-
 Config:
 
-EnabledMod - Enables or disables mod. (Type: bool)
+EnabledMod - Enables or disables mod.                                                                                                                                       Acceptable Params: true/false
 
-SimpleLevelingRate - Simple leveling multplier. (2 would be 2x normal rate)                     (Type: Integer)
+SimpleLevelingRate - Simple leveling multplier. (2 would be 2x normal rate)                                                                                                 Acceptable Params: 1, 2, 3...
 
-EnableSkillFatique - Enables or disables skill fatique.                                         (Type: bool)
+EnableSkillFatique - Enables or disables skill fatique.                                                                                                                     Acceptable Params: True/False
 
-EnableSkillAtrophy - Enables or disables skill atrophy(skill regression).                       (Type: bool)
+EnableSkillAtrophy - Enables or disables skill atrophy(skill regression).                                                                                                   Acceptable Params: True/False
 
-EnableAdvancedAdjustments - Enables advanced adjustments, when enabled skilling rates will be based off below numbers and SimpleLevelingRate will no longer do anything. (type: bool)
+EnableAdvancedAdjustments - Enables advanced adjustments, when enabled skilling rates will be based off below numbers and SimpleLevelingRate will no longer do anything.    Acceptable Params: True/False
 
-SkillMinEffectiveness - Minimum ammount of skills gain per action.                              (type: number)
-
-SkillFatiquePerPoint - Skill Fatique added per skill point gained.                              (type: number)
-
-SkillFreshEffectiveness - Skill point gain multiplier while fresh.                              (type: number)
-
-SkillFreshPoints - Ammount of fresh skill points.                                               (type: number)
-
-SkillPointsBeforeFatique - Ammount of skill points gained before skill fatique kicks in .       (type: number)
-
-SkillFatiqueReset - Time before skill fatique resets.                                           (type: number)
-
-SkillExpPerLevel - Ammount of base points needed to gain a level.                               (Type: number)
+SkillMinEffectiveness - Minimum ammount of skills gain per action.                                                                                                          Acceptable Params: 1, 2.2, 3.8...
+                                                                
+SkillFatiquePerPoint - Skill Fatique added per skill point gained.                                                                                                          Acceptable Params: 1, 2.2, 3.8...
+                                                                
+SkillFreshEffectiveness - Skill point gain multiplier while fresh.                                                                                                          Acceptable Params: 1, 2.2, 3.8...
+                                                                
+SkillFreshPoints - Ammount of fresh skill points.                                                                                                                           Acceptable Params: 1, 2.2, 3.8...
+                                                                
+SkillPointsBeforeFatique - Ammount of skill points gained before skill fatique kicks in .                                                                                   Acceptable Params: 1, 2.2, 3.8...
+                                                                
+SkillFatiqueReset - Time before skill fatique resets.                                                                                                                       Acceptable Params: 1, 2.2, 3.8...
+                                                                
+SkillExpPerLevel - Ammount of base points needed to gain a level.                                                                                                           Acceptable Params: 1, 2.2, 3.8...
 
 
 # EXHAUSTION #
 
-EnableExhaustionChanges - Enables/Disables Exhaustion changes                                   (type: bool)
-DefaultDelay - Delay before exhaustion kicks in                                                 (type: integer)                                      
-DefaultResidueTime - No fucking idea what this is tbh                                           (Type: integer)
-Damage - Damage per tick                                                                        (type: integer)
-DamageLoopTime - Time between damage ticks                                                      (type: integer)
+EnableExhaustionChanges - Enables/Disables Exhaustion changes                                                                                                               Acceptable Params: true/false
+
+DefaultDelay - Delay before exhaustion kicks in                                                                                                                             Acceptable Params: 1, 2, 3...     
+
+DefaultResidueTime - No fucking idea what this is tbh                                                                                                                       Acceptable Params: 1, 2, 3... 
+
+Damage - Damage per tick                                                                                                                                                    Acceptable Params: 1, 2, 3... 
+
+DamageLoopTime - Time between damage ticks                                                                                                                                  Acceptable Params: 1, 2, 3... 
 
 # Elite Skills #
 
-EnableEliteSkillChanges - Enables/disables Elite skill changes                                  (type: bool)
+Some elite skills are handled client side. So they will not be adjustable here.
 
-If you know the game you know what this shit does, not wasting my time writing what they do. Use google and the wiki.
-Some elite skills are handled client side. Ill looking into changing them at a later date, hence why some things might be missing at time of writing.
+EnableEliteSkillChanges - Enables/disables Elite skill changes                                                                                                              Acceptable Params: true/false
+
+All Elite skill values can be a number of any type.                                                                                                                         Acceptable Params: 1, 2.2, 3.8...
