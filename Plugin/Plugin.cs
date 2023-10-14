@@ -35,10 +35,8 @@ namespace EasySkillOptions
                 MainPlayer = Singleton<GameWorld>.Instance.MainPlayer;
             }
 
-            skillMods.InstantSearch();
-            skillMods.EliteEndurance();
-            skillMods.EliteStrength();
-            skillMods.EliteHealth();
+            skillMods.SetToggles();
+            //skillMods.SetSliderValues();
         }
     }
 }
