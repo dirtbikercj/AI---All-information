@@ -5,21 +5,21 @@ using EFT;
 
 namespace EasySkillOptions
 {
-    [BepInPlugin("com.dirtbikercj.EasySkillOptions", "Easy Skill Options", "1.0.0")]
+    [BepInPlugin("com.dirtbikercj.EasySkillOptions", "Easy Skill Options", "1.2.0")]
     public class Plugin : BaseUnityPlugin
     {
         public static Plugin Instance;
 
         public Player MainPlayer;
-        public SkillMods skillMods;
+        public EliteSkillToggles eliteSkillToggles;
 
         private void Awake()
         {
             Instance = this;
             DontDestroyOnLoad(Instance);
 
-            skillMods = new SkillMods();
-            skillMods.RegisterConfigs();
+            eliteSkillToggles = new EliteSkillToggles();
+            eliteSkillToggles.RegisterConfig();
         }
 
         private void Update()
@@ -35,7 +35,7 @@ namespace EasySkillOptions
                 MainPlayer = Singleton<GameWorld>.Instance.MainPlayer;
             }
 
-            skillMods.SetToggles();
+            eliteSkillToggles.SetToggles();
             //skillMods.SetSliderValues();
         }
     }
