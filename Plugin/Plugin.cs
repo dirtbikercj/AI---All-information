@@ -1,11 +1,13 @@
 ﻿using BepInEx;
+using BepInEx.Configuration;
 using Comfort.Common;
 using EasySkillOptions.Core;
+using EasySkillOptions.Patches;
 using EFT;
 
 namespace EasySkillOptions
 {
-    [BepInPlugin("com.dirtbikercj.EasySkillOptions", "Easy Skill Options", "1.2.0")]
+    [BepInPlugin("com.dirtbikercj.EasySkillOptions", "Easy Skill Options", "1.2.3")]
     public class Plugin : BaseUnityPlugin
     {
         public static Plugin Instance;
@@ -13,8 +15,18 @@ namespace EasySkillOptions
         public Player MainPlayer;
         public EliteSkillToggles eliteSkillToggles;
 
+        public static ConfigEntry<bool> QuickGrenade;
+
         private void Awake()
         {
+            QuickGrenade = Config.Bind(
+               "General",
+               "Quck Throw Grenades",
+               false,
+               "Instantly throw grenades");
+
+            new GrenadePatch().Enable();
+
             Instance = this;
             DontDestroyOnLoad(Instance);
 
