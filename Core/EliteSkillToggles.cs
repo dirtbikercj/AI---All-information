@@ -603,7 +603,7 @@ namespace EasySkillOptions.Core
                "Instantly search containers");
 
             instantCrafting = Instance.Config.Bind(
-               "Crafting",
+               "General",
                "Instant Crafting",
                false,
                "Instantly craft in the hideout (this will raise your crafting skill to elite permanantly.)");
