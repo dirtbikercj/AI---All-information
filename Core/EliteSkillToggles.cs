@@ -1,14 +1,19 @@
 ﻿using BepInEx.Configuration;
+using Comfort.Common;
 using EFT;
 using static EasySkillOptions.Plugin;
 
 namespace EasySkillOptions.Core
 {
-    public class EliteSkillToggles
+    internal class EliteSkillToggles
     {
         SkillManager skills;
 
+        #region Config Entires
+
         public static ConfigEntry<bool> instantSearch;
+        public ConfigEntry<bool> instantCrafting;
+        public ConfigEntry<bool> unlimtedCrafting;
         public static ConfigEntry<bool> eliteAimDrills;
         public static ConfigEntry<bool> eliteAssault;
         public static ConfigEntry<bool> eliteAttention;
@@ -44,7 +49,8 @@ namespace EasySkillOptions.Core
         public static ConfigEntry<bool> eliteTroubleShooting;
         public static ConfigEntry<bool> eliteVitality;
         public static ConfigEntry<bool> eliteRepair;
-
+        
+        #endregion
 
         #region TOGGLES
 
@@ -59,8 +65,14 @@ namespace EasySkillOptions.Core
             {
                 skills = Instance.MainPlayer.Skills;
             }
-
+            else if (skills == null)
+            {
+                skills = Singleton<LocalPlayer>.Instance.Skills;
+            }
+            
             InstantSearch();
+            InstantCrafting();
+            UnlimitedCrafting();
             EliteAimDrills();
             EliteAssault();
             EliteAttention();
@@ -126,6 +138,29 @@ namespace EasySkillOptions.Core
             }
         }
 
+        public void InstantCrafting()
+        {
+            if (!instantCrafting.Value)
+            {
+                return;
+            }
+
+            EliteCrafting(true);
+            skills.Settings.Crafting.CraftTimeReductionPerLevel = 100000f;
+        }
+
+        private void UnlimitedCrafting()
+        {
+            if (!unlimtedCrafting.Value && skills.Settings.Crafting.EliteExtraProductions != 1f)
+            {
+                skills.Settings.Crafting.EliteExtraProductions = 1f;
+                return;
+            }
+
+            EliteCrafting(true);
+            skills.Settings.Crafting.EliteExtraProductions = 10000000000f;
+        }
+
         private void EliteAimDrills()
         {
             if (!eliteAimDrills.Value)
@@ -178,9 +213,9 @@ namespace EasySkillOptions.Core
             }
         }
 
-        private void EliteCrafting()
+        private void EliteCrafting(bool bypass = false)
         {
-            if (!eliteCrafting.Value)
+            if (!eliteCrafting.Value || bypass)
             {
                 return;
             }
@@ -588,10 +623,22 @@ namespace EasySkillOptions.Core
             string mainSectionElite = "Easy Skill Options - Elite Toggles";
 
             instantSearch = Instance.Config.Bind(
-               mainSectionElite,
+               "General",
                "Instant Search",
                false,
                "Instantly search containers");
+
+            instantCrafting = Instance.Config.Bind(
+               "Crafting",
+               "Instant Crafting",
+               false,
+               "Instantly craft in the hideout (this will raise your crafting skill to elite permanantly.)");
+
+            unlimtedCrafting = Instance.Config.Bind(
+               "Crafting",
+               "Unlimted Crafting",
+               false,
+               "Unlimited crafts in the hideout (this will raise your crafting skill to elite permanantly.)");
 
             eliteAimDrills = Instance.Config.Bind(
                mainSectionElite,
@@ -655,9 +702,9 @@ namespace EasySkillOptions.Core
 
             eliteHMG = Instance.Config.Bind(
               mainSectionElite,
-              "Toggle Elite HMG's",
+              "Toggle Elite HMGs",
               false,
-              "Enables elite HMG's");
+              "Enables elite HMGs");
 
             eliteImmunity = Instance.Config.Bind(
                mainSectionElite,
@@ -679,9 +726,9 @@ namespace EasySkillOptions.Core
 
             eliteLMG = Instance.Config.Bind(
               mainSectionElite,
-              "Toggle Elite LMG's",
+              "Toggle Elite LMGs",
               false,
-              "Enables elite LMG's");
+              "Enables elite LMGs");
 
             eliteMagDrills = Instance.Config.Bind(
                mainSectionElite,
@@ -757,9 +804,9 @@ namespace EasySkillOptions.Core
 
             eliteSMG = Instance.Config.Bind(
                mainSectionElite,
-               "Toggle Elite SMG's",
+               "Toggle Elite SMGs",
                false,
-               "Enables elite SMG's");
+               "Enables elite SMGs");
 
             eliteStrength = Instance.Config.Bind(
               mainSectionElite,
