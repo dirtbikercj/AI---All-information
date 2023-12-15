@@ -13,7 +13,6 @@ namespace EasySkillOptions.Core
 
         public static ConfigEntry<bool> instantSearch;
         public ConfigEntry<bool> instantCrafting;
-        public ConfigEntry<bool> unlimtedCrafting;
         public static ConfigEntry<bool> eliteAimDrills;
         public static ConfigEntry<bool> eliteAssault;
         public static ConfigEntry<bool> eliteAttention;
@@ -71,8 +70,6 @@ namespace EasySkillOptions.Core
             }
             
             InstantSearch();
-            InstantCrafting();
-            UnlimitedCrafting();
             EliteAimDrills();
             EliteAssault();
             EliteAttention();
@@ -136,29 +133,6 @@ namespace EasySkillOptions.Core
             {
                 skills.IntellectEliteContainerScope.Value = true;
             }
-        }
-
-        public void InstantCrafting()
-        {
-            if (!instantCrafting.Value)
-            {
-                return;
-            }
-
-            EliteCrafting(true);
-            skills.Settings.Crafting.CraftTimeReductionPerLevel = 100000f;
-        }
-
-        private void UnlimitedCrafting()
-        {
-            if (!unlimtedCrafting.Value && skills.Settings.Crafting.EliteExtraProductions != 1f)
-            {
-                skills.Settings.Crafting.EliteExtraProductions = 1f;
-                return;
-            }
-
-            EliteCrafting(true);
-            skills.Settings.Crafting.EliteExtraProductions = 10000000000f;
         }
 
         private void EliteAimDrills()
@@ -633,12 +607,6 @@ namespace EasySkillOptions.Core
                "Instant Crafting",
                false,
                "Instantly craft in the hideout (this will raise your crafting skill to elite permanantly.)");
-
-            unlimtedCrafting = Instance.Config.Bind(
-               "Crafting",
-               "Unlimted Crafting",
-               false,
-               "Unlimited crafts in the hideout (this will raise your crafting skill to elite permanantly.)");
 
             eliteAimDrills = Instance.Config.Bind(
                mainSectionElite,
