@@ -31,7 +31,7 @@ namespace EasySkillOptions.Core
                mainLevelingMods,
                "Enable skill atrophy(regression)",
                true,
-               "Enables the roll back off skills");   
+               "Enables the roll back of skills");   
         }
 
         private int currentMultiplier = 1;
