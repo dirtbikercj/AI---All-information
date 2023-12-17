@@ -7,7 +7,7 @@ using EFT;
 
 namespace EasySkillOptions
 {
-    [BepInPlugin("com.dirtbikercj.EasySkillOptions", "Easy Skill Options", "2.0.0")]
+    [BepInPlugin("com.dirtbikercj.EasySkillOptions", "Easy Skill Options", "2.0.2")]
     internal class Plugin : BaseUnityPlugin
     {
         internal static Plugin Instance;
@@ -20,8 +20,6 @@ namespace EasySkillOptions
         private InstantCraftingPatch _craftingPatch;
         private bool _isCraftingPatchEnabled = false;
 
-        private InstantSearchPatch _instantSearchPatch;
-        private bool _isInstantSearchEnabled = false;
 
         internal static ConfigEntry<bool> QuickGrenade;
 
@@ -47,7 +45,6 @@ namespace EasySkillOptions
             levelingOptions.RegisterConfig();
 
             _craftingPatch = new InstantCraftingPatch();
-            _instantSearchPatch = new InstantSearchPatch();
             _isCraftingPatchEnabled = eliteSkillToggles.instantCrafting.Value;
    
         }
@@ -69,21 +66,21 @@ namespace EasySkillOptions
                 levelingOptions.SetSimpleLeveling();
             }
 
-            if (levelingOptions.enableAtrophy.Value && Singleton<BackendConfigSettingsClass>.Instantiated)
+            if (levelingOptions.enableAdvancedLevelingMod.Value && Singleton<BackendConfigSettingsClass>.Instantiated)
             {
-                levelingOptions.EnableAtrophy();
+                levelingOptions.SetadvancedLeveling();
             }
             
-            if (Singleton<GameWorld>.Instantiated || Singleton<LocalPlayer>.Instantiated)
+            if (Singleton<GameWorld>.Instantiated)
             {
                 eliteSkillToggles.SetToggles();
             }
 
-            ShouldPatchBeEnabled();
+            CheckEnablePatches();
         }
 
 
-        private void ShouldPatchBeEnabled()
+        private void CheckEnablePatches()
         {
             // Instant Crafting
             if (eliteSkillToggles.instantCrafting.Value && !_isCraftingPatchEnabled)
@@ -95,18 +92,6 @@ namespace EasySkillOptions
             {
                 _craftingPatch.Disable();
                 _isCraftingPatchEnabled = false;
-            }
-
-            // Instant Search
-            if (eliteSkillToggles.instantSearch.Value && !_isInstantSearchEnabled)
-            {
-                _instantSearchPatch.Enable();
-                _isInstantSearchEnabled = true;
-            }
-            else if (!eliteSkillToggles.instantSearch.Value && _isInstantSearchEnabled)
-            {
-                _instantSearchPatch.Disable();
-                _isInstantSearchEnabled = false;
             }
         }
     }
