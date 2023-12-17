@@ -1,9 +1,4 @@
 ﻿using Aki.Reflection.Patching;
-using EFT;
-using EFT.Hideout;
-using EFT.InventoryLogic;
-using HarmonyLib;
-using System.Linq;
 using System.Reflection;
 
 namespace EasySkillOptions.Patches

@@ -11,7 +11,7 @@ namespace EasySkillOptions.Core
 
         #region Config Entires
 
-        public static ConfigEntry<bool> instantSearch;
+        public ConfigEntry<bool> instantSearch;
         public ConfigEntry<bool> instantCrafting;
         public static ConfigEntry<bool> eliteAimDrills;
         public static ConfigEntry<bool> eliteAssault;
@@ -69,7 +69,6 @@ namespace EasySkillOptions.Core
                 skills = Singleton<LocalPlayer>.Instance.Skills;
             }
             
-            InstantSearch();
             EliteAimDrills();
             EliteAssault();
             EliteAttention();
@@ -107,34 +106,6 @@ namespace EasySkillOptions.Core
             EliteRepair();
         }
        
-        private void InstantSearch()
-        {
-            if (!instantSearch.Value)
-            {
-                return;
-            }
-
-            if (skills.Search.Level != 51)
-            {
-                skills.Search.SetLevel(51);
-            }
-
-            if (skills.AttentionEliteExtraLootExp.Value != true)
-            {
-                skills.AttentionEliteExtraLootExp.Value = true;
-            }
-
-            if (skills.AttentionEliteLuckySearch.Value != 100f)
-            {
-                skills.AttentionEliteLuckySearch.Value = 100f;
-            }
-
-            if (skills.IntellectEliteContainerScope.Value != true)
-            {
-                skills.IntellectEliteContainerScope.Value = true;
-            }
-        }
-
         private void EliteAimDrills()
         {
             if (!eliteAimDrills.Value)
