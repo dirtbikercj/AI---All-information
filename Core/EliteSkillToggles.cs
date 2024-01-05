@@ -22,6 +22,7 @@ namespace EasySkillOptions.Core
         public static ConfigEntry<bool> eliteDMR;
         public static ConfigEntry<bool> eliteEndurance;
         public static ConfigEntry<bool> eliteHealth;
+        public static ConfigEntry<bool> eliteHeavyVests;
         public static ConfigEntry<bool> eliteHideout;
         public static ConfigEntry<bool> eliteHMG;
         public static ConfigEntry<bool> eliteImmunity;
@@ -34,7 +35,6 @@ namespace EasySkillOptions.Core
         public static ConfigEntry<bool> eliteMetabolism;
         public static ConfigEntry<bool> elitePerception;
         public static ConfigEntry<bool> elitePistol;
-        public static ConfigEntry<bool> eliteProne;
         public static ConfigEntry<bool> eliteRecoil;
         public static ConfigEntry<bool> eliteRevolver;
         public static ConfigEntry<bool> eliteSearch;
@@ -75,6 +75,7 @@ namespace EasySkillOptions.Core
             EliteDMR();
             EliteEndurance();
             EliteHealth();
+            EliteHeavyVests();
             EliteHideout();
             EliteHMG();
             EliteImmunity();
@@ -87,7 +88,6 @@ namespace EasySkillOptions.Core
             EliteMetabolism();
             ElitePerception();
             ElitePistol();
-            EliteProne();
             EliteRecoil();
             EliteRevolver();
             EliteSearch();
@@ -248,6 +248,19 @@ namespace EasySkillOptions.Core
             }
         }
 
+        private void EliteHeavyVests()
+        {
+            if (!eliteHeavyVests.Value)
+            {
+                return;
+            }
+
+            if (skills.HeavyVests.Level != 51)
+            {
+                skills.HeavyVests.SetLevel(51);
+            }
+        }
+
         private void EliteHideout()
         {
             if (!eliteHideout.Value)
@@ -401,19 +414,6 @@ namespace EasySkillOptions.Core
             if (skills.Pistol.Level != 51)
             {
                 skills.Pistol.SetLevel(51);
-            }
-        }
-
-        private void EliteProne()
-        {
-            if (!eliteProne.Value)
-            {
-                return;
-            }
-
-            if (skills.ProneMovement.Level != 51)
-            {
-                skills.ProneMovement.SetLevel(51);
             }
         }
 
@@ -658,6 +658,12 @@ namespace EasySkillOptions.Core
               false,
               "Enables elite Health");
 
+            eliteHealth = Instance.Config.Bind(
+              mainSectionElite,
+              "Toggle Elite Heavy Vests",
+              false,
+              "Enables elite Heavy Vests");
+
             eliteHideout = Instance.Config.Bind(
               mainSectionElite,
               "Toggle Elite Hideout management",
@@ -729,12 +735,6 @@ namespace EasySkillOptions.Core
                "Toggle Elite Pistols",
                false,
                "Enables elite Pistols");
-
-            eliteProne = Instance.Config.Bind(
-               mainSectionElite,
-               "Toggle Elite Prone movement",
-               false,
-               "Enables elite Prone movement");
 
             eliteRecoil = Instance.Config.Bind(
               mainSectionElite,

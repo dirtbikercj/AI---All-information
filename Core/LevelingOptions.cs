@@ -75,7 +75,7 @@ namespace EasySkillOptions.Core
                advancedLevelingMods,
                "Skill fatique per point",
                0.5f,
-               new ConfigDescription("How much fatique is accumulated per skill point gained", new AcceptableValueRange<float>(1, 10)));
+               new ConfigDescription("How much fatique is accumulated per skill point gained", new AcceptableValueRange<float>(0, 10)));
 
             skillMinEffectiveness = Instance.Config.Bind(
                advancedLevelingMods,
