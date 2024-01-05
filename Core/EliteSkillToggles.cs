@@ -658,7 +658,7 @@ namespace EasySkillOptions.Core
               false,
               "Enables elite Health");
 
-            eliteHealth = Instance.Config.Bind(
+            eliteHeavyVests = Instance.Config.Bind(
               mainSectionElite,
               "Toggle Elite Heavy Vests",
               false,
