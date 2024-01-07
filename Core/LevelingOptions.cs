@@ -1,5 +1,4 @@
 ﻿using BepInEx.Configuration;
-using EFT;
 using static EasySkillOptions.Plugin;
 
 
@@ -7,9 +6,11 @@ namespace EasySkillOptions.Core
 {
     internal class LevelingOptions
     {
+        /*
         public ConfigEntry<bool> enableSimpleLevelingMod;
         public static ConfigEntry<int> simpleLevelingMod;
-        
+        */
+
         public ConfigEntry<bool> enableAdvancedLevelingMod;
         public static ConfigEntry<float> freshSkillPoints;
         public static ConfigEntry<float> skillPointsBeforeFatique;
@@ -22,9 +23,10 @@ namespace EasySkillOptions.Core
 
         public void RegisterConfig()
         {
-            string mainLevelingMods = "Simple Leveling Modifier";
+            //string mainLevelingMods = "Simple Leveling Modifier";
             string advancedLevelingMods = "Advanced Leveling Modifiers";
 
+            /*
             enableSimpleLevelingMod = Instance.Config.Bind(
                mainLevelingMods,
                "Enable simple leveling modifier",
@@ -37,7 +39,7 @@ namespace EasySkillOptions.Core
                1,
                new ConfigDescription("Leveling speed modifier", new AcceptableValueRange<int>(1, 20)));
 
-            
+            */
             // Advanced leveling
             
             
@@ -98,8 +100,9 @@ namespace EasySkillOptions.Core
 
         #region Simple Leveling
 
-        private int currentMultiplier = 1;
+        //private int currentMultiplier = 1;
 
+        /*
         public void SetSimpleLeveling()
         {
             if (!enableSimpleLevelingMod.Value || !ShouldChangeValues() || BackendConfig == null)
@@ -130,6 +133,7 @@ namespace EasySkillOptions.Core
             // Set the current multiplier so we dont repeat the process if not needed
             currentMultiplier = simpleLevelingMod.Value;
         }
+        */
 
         private void SetOriginalValues()
         {
@@ -146,11 +150,12 @@ namespace EasySkillOptions.Core
                 BackendConfig.SkillsSettings.SkillProgressRate = 0.4f;   
         }
 
+        /*
         private bool ShouldChangeValues()
         {
             return currentMultiplier != simpleLevelingMod.Value;
         }
-
+        */
         #endregion
 
         public void SetadvancedLeveling()
@@ -164,10 +169,12 @@ namespace EasySkillOptions.Core
 
             // If simple leveling is enabled,
             // Disable it and proceed
+            /*
             if (enableSimpleLevelingMod.Value)
             {
                 enableSimpleLevelingMod.Value = false;
             }
+            */
 
             SetOriginalValues();
             SetSkillPoints();

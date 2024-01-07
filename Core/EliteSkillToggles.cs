@@ -1,5 +1,4 @@
 ﻿using BepInEx.Configuration;
-using Comfort.Common;
 using EFT;
 using static EasySkillOptions.Plugin;
 
